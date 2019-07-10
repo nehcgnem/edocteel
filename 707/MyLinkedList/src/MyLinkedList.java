@@ -3,6 +3,7 @@ class MyLinkedList {
         int val;
         Node prev;
         Node next;
+
         Node(int val) {
             this.val = val;
         }
@@ -52,16 +53,14 @@ class MyLinkedList {
      * Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted.
      */
     public void addAtIndex(int index, int val) {
-        if (index < 0 || index > size) return;
+        // if (index < 0 || index > size) return;
+        if (index > size) return;
+        else if (index < 0) index = 0;
         Node curr = head;
         for (int i = 0; i <= index; i++) {
             curr = curr.next;
         }
         Node newNode = new Node(val);
-//        newNode.next = curr.next;
-//        newNode.prev = curr;
-//        curr.next.prev = newNode;
-//        curr.next = newNode;
         newNode.prev = curr.prev;
         newNode.next = curr;
         curr.prev.next = newNode;
